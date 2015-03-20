@@ -1,48 +1,54 @@
 var $ = require('jquery'); 
 var _ = require('underscore');
+var Backbone = require('backbone');
 var React = require('react');
-var Backbone = require('backbone');  
+var list = require('./warrior-list');
+var Warrior = require('./warrior');
     
-
-var TopBar = require('./topbar.js');
-var AppContent = require('./appcontent.js');
-var AppFooter = require('./app-footer.js');
-
-
-var workSpace = Backbone.Router.extend({
-	routes : {
-		'' 			: 'index',
-		'home' 		: 'changedUrl',
-		'products'	: 'changedUrl',
-		'grower'	: 'changedUrl',
-		'contact'	: 'changedUrl',
-		'*default'  : 'index'
-	},
-	changedUrl : function (route,params) {
-		this.trigger('change','home');
-	},
-	index : function () {
-		this.navigate('home');
-	}
-});
- 
+var warriorCollection = Backbone.Collection.extend({
+        					comparator : function (a,b) {
+								return b.get('honor') - a.get('honor');
+							}	
+						}); 
 
 var App = React.createClass({displayName: 'App',
 	getInitialState : function () {
-        return { action : '#home' };
+        	return { collection : new warriorCollection() };
 	},
 	componentDidMount : function () {
-		this.props.router.on('change',function(action) {
-			console.log(window.location.hash);
-			this.setState({ action : window.location.hash });
-		}.bind(this))
+		list.forEach(function (value) {
+			$.ajax({
+				type : 'GET',
+				url : 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22codewars.com%2Fusers%2F'+ value + '%22%20and%20xpath%3D%27%2F%2F*%5B%40id%3D%22shell_content%22%5D%2Fdiv%5B3%5D%2Fsection%27&format=json'
+			}).done(function (data){
+				this.state.collection.add({
+					username : data.query.results.section.div.figure.img.title,
+					name : data.query.results.section.div.figcaption.h1.content,
+					clan : data.query.results.section.div.figcaption.div[2].content,
+					skills : data.query.results.section.div.figcaption.div[3].content,
+					honor : data.query.results.section.div.figcaption.div[4].content.split('#')[0],
+					img : data.query.results.section.div.figure.img.src
+				});
+				this.state.collection.sort();
+				this.forceUpdate();
+			}.bind(this)).fail( function () {
+				console.log('FATAL ERROR: request fail...');
+			});
+		}.bind(this));	
 	},
 	render : function () {
+		var ranking = this.state.collection.map(function (model) {
+			return React.createElement(Warrior, {model: model});
+				
+		}); 
 	    return (
-	    	React.createElement("div", null, 
-		      	React.createElement(TopBar, {name: "Latinotrading"}), 
-		      	React.createElement(AppContent, {action: this.state.action}), 
-		      	React.createElement(AppFooter, null)	
+	    	React.createElement("div", {className: "small-12 large-8 large-centered columns container"}, 
+		      	React.createElement("div", {className: "box"}, 
+		      		React.createElement("h1", {className: "title"}, "REVELEX CODEWARS RANKING"), 
+		      		React.createElement("div", {className: "row rank-list"}, 
+		      			ranking 
+		      		)
+		      	)
 		    )  	
 	    );  	
 	}
@@ -51,10 +57,8 @@ var App = React.createClass({displayName: 'App',
 
 $(document).ready(function () {
     
-    var routerApp = new workSpace();
-    Backbone.history.start();
-    React.render(
-		React.createElement(App, {router: routerApp}),
+    React.render( 
+		React.createElement(App, null),
 	   	document.getElementById('app') 
 	); 
 

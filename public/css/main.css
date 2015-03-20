@@ -8933,115 +8933,51 @@ a.th {
   content: "\f20c";
 }
 
-/* line 1, src/_orbit.scss */
-.orbit-enter {
-  opacity: 0;
-  transition: opacity .5s ease-in;
+/* line 6, src/main.scss */
+.container h1.title {
+  text-align: center;
+  margin-top: 0px;
 }
 
-/* line 6, src/_orbit.scss */
-.orbit-enter.orbit-enter-active {
-  opacity: 1;
-}
-
-/* line 10, src/_orbit.scss */
-.orbit-leave {
-  opacity: 1;
-  transition: opacity .5s ease-in;
-}
-
-/* line 15, src/_orbit.scss */
-.orbit-leave.orbit-leave-active {
-  opacity: 0;
-}
-
-/* line 21, src/_orbit.scss */
-.orbitControls .next, .orbitControls .prev {
-  position: absolute;
-  top: 160px;
-  width: 45px;
-  height: 80px;
-  background-color: #019934;
-  opacity: 0.6;
-}
-/* line 30, src/_orbit.scss */
-.orbitControls .next {
-  right: 0px;
-}
-/* line 32, src/_orbit.scss */
-.orbitControls .next:before {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  position: absolute;
-  content: "\f054";
-  color: white;
-  font-size: 25px;
-  left: 35%;
-  top: 29px;
-}
-/* line 42, src/_orbit.scss */
-.orbitControls .prev {
-  left: 0px;
-}
-/* line 44, src/_orbit.scss */
-.orbitControls .prev:before {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  position: absolute;
-  content: "\f053";
-  color: white;
-  font-size: 25px;
-  left: 25%;
-  top: 29px;
-}
-
-/* line 1, src/_contact-us.scss */
-.contactContainer {
-  border: 3px solid #019934;
-  border-radius: 10px;
-  padding: 0px;
-  margin-bottom: 50px;
-}
-/* line 7, src/_contact-us.scss */
-.contactContainer .header {
-  list-style: none;
+/* line 12, src/main.scss */
+.box {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   width: 100%;
-  background-color: #019934;
-  margin: 0px;
-  padding: 10px 0px;
+  height: 100%;
+  padding: 15px;
+  margin-top: 20px;
 }
-/* line 14, src/_contact-us.scss */
-.contactContainer .header li {
-  display: inline;
-  margin: 0px 20px;
-}
-/* line 18, src/_contact-us.scss */
-.contactContainer .header li a {
-  color: white;
-}
-/* line 23, src/_contact-us.scss */
-.contactContainer .content {
-  padding: 30px 20px;
-}
-/* line 25, src/_contact-us.scss */
-.contactContainer .content a.button {
+
+/* line 20, src/main.scss */
+.rank-list {
+  list-style: none;
   margin: 0px;
 }
-/* line 29, src/_contact-us.scss */
-.contactContainer .content .info h2 {
+/* line 23, src/main.scss */
+.rank-list .warrior {
+  width: 100%;
+  margin: 10px 0px;
+}
+/* line 26, src/main.scss */
+.rank-list .warrior img.avatar {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+/* line 31, src/main.scss */
+.rank-list .warrior h1.name {
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: 20px;
-  margin: 0px;
-  color: #404040;
+  font-weight: bold;
+  font-family: "Lato","Helvetica Neue","Helvetica",Arial;
 }
-/* line 33, src/_contact-us.scss */
-.contactContainer .content .info h2.last {
-  margin-bottom: 30px;
+/* line 38, src/main.scss */
+.rank-list .warrior h6 {
+  font-size: 80%;
+}
+/* line 41, src/main.scss */
+.rank-list .warrior h1.big-honor {
+  margin: auto;
+  font-size: 75px;
 }

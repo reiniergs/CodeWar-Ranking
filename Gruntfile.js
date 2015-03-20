@@ -65,16 +65,10 @@ module.exports = function(grunt) {
 
     
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-react');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-browserify');
 
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('commonBundle',['concat:dist']);
-
-    grunt.registerTask('jsx',['react']);
-    grunt.registerTask('styles',['compass']);
     
-
 };
