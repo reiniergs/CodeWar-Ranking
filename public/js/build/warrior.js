@@ -3,7 +3,7 @@ var React = require('react');
 var Warrior = React.createClass({displayName: 'Warrior',
 	render : function () {
 		return (
-			React.createElement("div", {className: "small-12 columns warrior"}, 
+			React.createElement("div", {className: "small-12 columns warrior", key:  this.props.model.get('id') }, 
 				React.createElement("div", {className: "large-2 columns"}, 
 					React.createElement("img", {className: "avatar", src: this.props.model.get('img')})
 				), 

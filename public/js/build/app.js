@@ -37,8 +37,8 @@ var App = React.createClass({displayName: 'App',
 		}.bind(this));	
 	},
 	render : function () {
-		var ranking = this.state.collection.map(function (model) {
-			return React.createElement(Warrior, {model: model});
+		var ranking = this.state.collection.map(function (model,index) {
+			return React.createElement(Warrior, {model: model, key: index });
 				
 		}); 
 	    return (

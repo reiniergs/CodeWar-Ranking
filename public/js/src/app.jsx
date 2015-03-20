@@ -37,8 +37,8 @@ var App = React.createClass({
 		}.bind(this));	
 	},
 	render : function () {
-		var ranking = this.state.collection.map(function (model) {
-			return <Warrior model={model} />;
+		var ranking = this.state.collection.map(function (model,index) {
+			return <Warrior model={model} key={ index }/>;
 				
 		}); 
 	    return (
