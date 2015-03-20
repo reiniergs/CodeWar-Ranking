@@ -1,4 +1,5 @@
 var React = require('react');
+var HonorUpper = require('./HonorUpper');
 
 var Warrior = React.createClass({displayName: 'Warrior',
 	render : function () {
@@ -14,7 +15,7 @@ var Warrior = React.createClass({displayName: 'Warrior',
 					React.createElement("h6", null, "Honor: ", this.props.model.get('honor'))
 				), 
 				React.createElement("div", {className: "small-3 columns"}, 
-					React.createElement("h1", {className: "big-honor"}, this.props.model.get('honor'))
+					React.createElement(HonorUpper, {value: this.props.model.get('honor')})
 				)
 			)
 			);
