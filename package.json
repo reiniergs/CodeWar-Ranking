@@ -37,13 +37,13 @@
     "underscore": "^1.7.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./bin/www",
     "debug": "node debug app.js"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ecabello/inventory.git"
+    "url": "git://github.com/reiniergs/inventory.git"
   },
   "author": "rguerra",
   "license": "MIT",
